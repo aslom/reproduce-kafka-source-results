@@ -1,0 +1,1 @@
+Results of running tests from https://github.com/aslom/reproduce-kafka-source
