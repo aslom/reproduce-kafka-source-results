@@ -4,9 +4,9 @@ https://github.com/knative-sandbox/eventing-kafka-broker/issues/2240#issuecommen
 To reproduce setup everything needed for Knative and then:
 
 ```
-https://github.com/knative-sandbox/eventing-kafka-broker.git
+https://github.com/aavarghese/eventing-kafka-broker.git
 cd eventing-kafka-broker
-git checkout 3287ed6dcf949032bb805652e504b9c03ae472ab
+git checkout incrementalassignor
 ./hack/run.sh deploy-source
 ```
 
@@ -18,7 +18,7 @@ cd reproduce-kafka-source
 ko apply -f duplicates1
 ``
 
-To scale Kafka source
+After few minutes running test do scale Kafka source
 
 ```
 kubectl scale --replicas=50 kafkasources/kafka-src50
@@ -27,18 +27,24 @@ kubectl scale --replicas=50 kafkasources/kafka-src50
 
 To gather logs
 
+Knative eventing:
+
 ```
-k -n knative-eventing logs -l=app=kafka-source-dispatcher --max-log-requests 10 -f | tee logs1a.txt
-k -n knative-eventing logs -f kafka-source-controller- | tee -a kafka-source-controller.txt
-k logs eventdisplay-9f4c7855-x42tp -f | tee logs2.txt
-k logs duplicates1-kafkaproduce- | tee logs-kafkaproducer.txt
+k -n knative-eventing logs -l=app=kafka-source-dispatcher --max-log-requests 10 -f | tee logs-kafka-source-data-plane2.txt
+k -n knative-eventing logs -f kafka-source-controller- | tee -a logs-kafka-source-controller2.txt
+```
+
+Test side:
+
+```
+k logs eventdisplay- -f | tee logs-event-display2.txt
+k logs duplicates1-kafkaproduce- | tee logs-kafkaproducer2.txt
 ```
 
 To monitor test exeuciton:
 
 ```
 kubectl run curl --image=curlimages/curl --rm=true --restart=Never -ti -- http://kafkascraper/stats
-source kafka-src50 received: 5000 messages, 3959 are dups and 0 non 200s.
 ```
 
 ```
