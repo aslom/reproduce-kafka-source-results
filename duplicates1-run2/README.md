@@ -1,5 +1,5 @@
 Logs corresponding to test run
-https://github.com/knative-sandbox/eventing-kafka-broker/issues/2240#issuecomment-1151455968
+https://github.com/knative-sandbox/eventing-kafka-broker/issues/2240#issuecomment-1155480266
 
 To reproduce setup everything needed for Knative and then:
 
