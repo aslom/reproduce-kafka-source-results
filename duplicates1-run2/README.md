@@ -18,7 +18,7 @@ cd reproduce-kafka-source
 # optional - if you want to run exactlu the smae test code:
 #git checkout 1abba8978e8694e16ebc187c6a0211f89c03ea2b
 ko apply -f duplicates1
-``
+```
 
 After few minutes running test do scale Kafka source
 
