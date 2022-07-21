@@ -1,8 +1,7 @@
 # Testing for duplicates
 
 Logs corresponding to test run
-https://github.com/knative-sandbox/eventing-kafka-broker/issues/2240
-
+https://github.com/knative-sandbox/eventing-kafka-broker/issues/2240#issuecomment-1191772248
 ## Deploy Kafka Source
 
 To reproduce setup everything needed is to deploy Knative Kafka Source 1.6:
@@ -142,7 +141,7 @@ source kafka-src50 received: 8055 messages, 0 are dups and 0 non 200s.
 ```
 
 
-And to check how many messages are consumed form test topic paritiions:
+And to check how many messages are consumed form test topic paritiions (look for LAG):
 
 ```
 kubectl -n kafka run kafka-consumer-groups -ti --image=quay.io/strimzi/kafka:0.28.0-kafka-3.1.0 --rm=true --restart=Never -- bin/kafka-consumer-groups.sh --bootstrap-server my-cluster-kafka-bootstrap:9092 --describe  --group kafka-src50c
