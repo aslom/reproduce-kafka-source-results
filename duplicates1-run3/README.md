@@ -1,7 +1,7 @@
 # Testing for duplicates
 
 Logs corresponding to test run
-https://github.com/knative-sandbox/eventing-kafka-broker/issues/2240
+https://github.com/knative-sandbox/eventing-kafka-broker/issues/2240#issuecomment-1191831657
 
 ## Deploy Kafka Source
 
@@ -111,12 +111,12 @@ ko apply -f duplicates1
 Logs for test side:
 
 ```
-k logs -l=app=eventdisplay -f | tee logs-event-display3.txt
+k logs -l=app=eventdisplay -f | tee logs-event-display4.txt
 ```
 
 
 ```
-k logs -l=app=kafkascraper -f | tee logs-kafkaproducer3.txt
+k logs -l=app=kafkascraper -f | tee logs-kafkaproducer4.txt
 ```
 
 
@@ -125,8 +125,6 @@ After one minute running the test scale Kafka source
 ```
 kubectl scale --replicas=50 kafkasources/kafka-src50
 ```
-
-
 
 To monitor test exeuciton with stats:
 
@@ -137,7 +135,6 @@ kubectl run curl --image=curlimages/curl --rm=true --restart=Never -ti -- http:/
 Expected output should look like
 
 ```
-kubectl run curl --image=curlimages/curl --rm=true --restart=Never -ti -- http://kafkascraper/stats
 source kafka-src50 received: 8055 messages, 0 are dups and 0 non 200s.
 ```
 
