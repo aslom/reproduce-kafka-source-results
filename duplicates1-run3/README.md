@@ -11,7 +11,7 @@ To reproduce setup everything needed is to deploy Knative Kafka Source 1.6:
 k apply -f https://github.com/knative-sandbox/eventing-kafka-broker/releases/download/knative-v1.6.0/eventing-kafka-source-bundle.yaml
 ```
 
-## Configuere Kafka Source
+## Configure Kafka Source
 
 ### Edit config to enable rate-limiting and executor queue metrics
 
